@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Rider Monitoring System</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🏍 Rider Monitoring System</h1>
+
+<!-- RIDER MANAGEMENT -->
+<div class="card">
+
+<h2>Rider Management</h2>
+
+<div class="flex-wrap">
+
+<input
+type="text"
+id="newRiderName"
+placeholder="Enter rider name">
+
+<button
+onclick="addRider()"
+class="btn green">
+
+Add Rider
+
+</button>
+
+</div>
+
+<div class="flex-wrap mt20">
+
+<select id="manageRider">
+
+<option value="">
+Choose Rider
+</option>
+
+</select>
+
+<button
+onclick="editRider()"
+class="btn yellow">
+
+Edit Rider
+
+</button>
+
+<button
+onclick="deleteRider()"
+class="btn red">
+
+Delete Rider
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ADD RECORD -->
+<div class="card">
+
+<h2>Add Rider Record</h2>
+
+<div class="grid">
+
+<div>
+
+<label>Rider</label>
+
+<select id="recordRider">
+
+<option value="">
+Choose Rider
+</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Date</label>
+
+<input
+type="date"
+id="recordDate"
+onchange="detectDay()">
+
+</div>
+
+<div>
+
+<label>Day</label>
+
+<input
+type="text"
+id="recordDay"
+readonly
+class="readonly">
+
+</div>
+
+<div>
+
+<label>Time In</label>
+
+<input
+type="time"
+id="timeIn">
+
+</div>
+
+<div>
+
+<label>Time Out</label>
+
+<input
+type="time"
+id="timeOut">
+
+</div>
+
+<div>
+
+<label>Break Time (mins)</label>
+
+<input
+type="number"
+id="breakTime"
+placeholder="Example: 60">
+
+</div>
+
+</div>
+
+<div class="right mt20">
+
+<button
+onclick="addRecord()"
+class="btn blue">
+
+Add Record
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SCHEDULE -->
+<div class="card">
+
+<h2>Schedule Management</h2>
+
+<select
+id="scheduleRider"
+onchange="initializeCalendars()">
+
+<option value="">
+Choose Rider
+</option>
+
+</select>
+
+<div
+id="calendarWrapper"
+class="calendar-wrapper">
+
+<!-- ASSIGN -->
+<div class="calendar-box">
+
+<h3>Assign Schedule</h3>
+
+<div class="calendar-header">
+
+<button onclick="prevAssignMonth()">◀</button>
+
+<h3 id="assignMonthYear"></h3>
+
+<button onclick="nextAssignMonth()">▶</button>
+
+</div>
+
+<div
+id="assignCalendar"
+class="calendar-grid"></div>
+
+</div>
+
+<!-- VIEW -->
+<div class="calendar-box">
+
+<h3>View Attendance</h3>
+
+<div class="calendar-header">
+
+<button onclick="prevViewMonth()">◀</button>
+
+<h3 id="viewMonthYear"></h3>
+
+<button onclick="nextViewMonth()">▶</button>
+
+</div>
+
+<div
+id="viewCalendar"
+class="calendar-grid"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- REPORT -->
+<div class="card">
+
+<h2>Report Generator</h2>
+
+<div class="flex-wrap align-end">
+
+<div>
+
+<label>Report Type</label>
+
+<select id="reportType">
+
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+<option value="monthly">Monthly</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Select Date</label>
+
+<input
+type="date"
+id="reportDate">
+
+</div>
+
+<button
+onclick="generateReport()"
+class="btn cyan">
+
+Generate Report
+
+</button>
+
+<button
+onclick="downloadReport()"
+class="btn green">
+
+Download Excel Report
+
+</button>
+
+</div>
+
+<div
+id="reportOutput"
+class="mt20 overflow"></div>
+
+</div>
+
+<!-- RECORDS -->
+<div class="card">
+
+<div class="records-header">
+
+<h2>Rider Records</h2>
+
+<input
+type="text"
+id="search"
+placeholder="Search rider..."
+onkeyup="renderTable()">
+
+</div>
+
+<div class="overflow mt20">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+<th>Date</th>
+<th>Day</th>
+<th>Time In</th>
+<th>Time Out</th>
+<th>Break</th>
+<th>Total Hours</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+
+</div>
+
+<div
+id="pagination"
+class="pagination"></div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
