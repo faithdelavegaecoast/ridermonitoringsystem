@@ -74,9 +74,8 @@ const selected = document.getElementById("manageRider").value;
 if(selected==="") return;
 
 if(confirm("Delete rider?")){
-riderNames = riderNames.filter(r=>r!==selected);
-records = records.filter(r=>r.name!==selected);
-schedules = schedules.filter(r=>r.name!==selected);
+riderNames = riderNames.filter(r => r !== selected);
+schedules = schedules.filter(s => s.name !== selected);
 saveData();
 loadDropdowns();
 renderTable();
